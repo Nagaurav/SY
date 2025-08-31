@@ -16,6 +16,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import { colors } from '../theme/colors';
 import { professionalFilterService } from '../services/professionalFilterService';
 import { Professional } from '../services/professionalFilterService';
+import { ROUTES } from '../navigation/constants';
 
 // Category configuration for icons and colors
 const CATEGORY_CONFIG = {
@@ -108,7 +109,7 @@ const ProfessionalListingScreen: React.FC = () => {
         latitude: location?.latitude,
         longitude: location?.longitude,
         sort_by: 'rating' as const,
-        ...(serviceType && { service_type: serviceType === 'classes' ? 'class' : 'consultation' }), // Map service type to API format
+        ...(serviceType && { service_type: (serviceType === 'classes' ? 'class' : 'consultation') as 'consultation' | 'class' | 'therapy' | 'workshop' }), // Map service type to API format
       };
 
       const response = await professionalFilterService.getFilteredProfessionals(queryParams);
