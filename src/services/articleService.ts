@@ -1,6 +1,6 @@
 // articleService.ts
 // Load local articles dataset until API is wired
-const blogsData = require('../data/blogs.json');
+const articlesData = require('../data/articles.json');
 
 export interface Article {
   id: number;
@@ -52,7 +52,7 @@ class ArticleService {
   async getArticles(filters: ArticleFilters = {}, page: number = 1, limit: number = 10): Promise<ArticleResponse> {
     try {
       // For now, load from local data
-      const mockArticles: Article[] = (blogsData.blogs || []) as Article[];
+      const mockArticles: Article[] = (articlesData.articles || []) as Article[];
       
       // Apply filters
       let filteredArticles = mockArticles.filter(article => {

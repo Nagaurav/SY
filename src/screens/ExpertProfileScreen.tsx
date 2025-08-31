@@ -137,7 +137,7 @@ const ExpertProfileScreen: React.FC = () => {
   // Book a slot
   const handleBookSlot = (slot: any) => {
     // Check if this is a yoga instructor (from yoga flow)
-    const isYogaInstructor = expert?.category === 'yoga' || expert?.specialization?.includes('Yoga');
+    const isYogaInstructor = expert?.category === 'yoga' || expert?.specializations?.includes('Yoga');
     
     if (isYogaInstructor) {
       // For yoga instructors, navigate to the yoga booking flow

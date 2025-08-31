@@ -12,6 +12,14 @@ export const colors = {
   errorLight: '#FFE8E8', // Light error background
   lightSage: '#E8F5E8', // Light green background
   border: '#E2E8F0', // Border color
+  
+  // Additional colors for BookingDetailsScreen
+  warning: '#FFA500', // Orange for warning states
+  primaryBlue: '#007AFF', // Blue for primary actions
+  gray: '#6B7280', // Gray for secondary elements
+  info: '#17A2B8', // Info blue
+  text: '#1A202C', // Alias for primaryText
+  
   // Wellness category colors
   accentOrange: '#FF6B35',
   accentYellow: '#FFD93D',
@@ -20,4 +28,9 @@ export const colors = {
   accentPink: '#FD79A8',
   accentTeal: '#00B894',
   accentIndigo: '#5F27CD',
+  
+  // Additional colors for PaymentSuccessScreen
+  white: '#FFFFFF', // White color
+  lightGray: '#F1F3F4', // Light gray
+  primaryRed: '#F44336', // Red color
 };

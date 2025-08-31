@@ -13,7 +13,7 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { colors } from '../theme/colors';
 import { makeApiRequest } from '../config/api';
 
@@ -25,7 +25,7 @@ interface SupportTicket {
 }
 
 const CustomerSupportScreen: React.FC = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp<any>>();
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState<SupportTicket>({
     subject: '',
@@ -102,7 +102,7 @@ const CustomerSupportScreen: React.FC = () => {
         {category.label}
       </Text>
       {formData.category === category.value && (
-        <MaterialCommunityIcons name="check" size={20} color={colors.white} />
+        <MaterialCommunityIcons name="check" size={20} color={colors.offWhite} />
       )}
     </TouchableOpacity>
   );
@@ -202,10 +202,10 @@ const CustomerSupportScreen: React.FC = () => {
           disabled={loading}
         >
           {loading ? (
-            <ActivityIndicator size="small" color={colors.white} />
+            <ActivityIndicator size="small" color={colors.offWhite} />
           ) : (
             <>
-              <MaterialCommunityIcons name="send" size={20} color={colors.white} />
+              <MaterialCommunityIcons name="send" size={20} color={colors.offWhite} />
               <Text style={styles.submitButtonText}>Submit Ticket</Text>
             </>
           )}

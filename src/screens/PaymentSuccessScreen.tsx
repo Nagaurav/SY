@@ -143,9 +143,9 @@ const PaymentSuccessScreen: React.FC = () => {
     );
   }
 
-  const isSuccess = paymentDetails?.status.data.status === 'SUCCESS';
-  const statusColor = phonePePaymentService.getPaymentStatusColor(paymentDetails?.status.data.status || 'PENDING');
-  const statusText = phonePePaymentService.getPaymentStatusDisplay(paymentDetails?.status.data.status || 'PENDING');
+  const isSuccess = paymentDetails?.status?.data?.status === 'SUCCESS';
+  const statusColor = phonePePaymentService.getPaymentStatusColor(paymentDetails?.status?.data?.status || 'PENDING');
+  const statusText = phonePePaymentService.getPaymentStatusDisplay(paymentDetails?.status?.data?.status || 'PENDING');
 
   return (
     <ScrollView style={styles.container}>
@@ -188,75 +188,28 @@ const PaymentSuccessScreen: React.FC = () => {
           <View style={styles.detailRow}>
             <Text style={styles.detailLabel}>Transaction ID:</Text>
             <Text style={styles.detailValue}>
-              {phonePePaymentService.formatTransactionId(paymentDetails.status.data.merchant_transaction_id)}
+              {paymentDetails?.status?.data?.transactionId || 'N/A'}
             </Text>
           </View>
           
           <View style={styles.detailRow}>
-            <Text style={styles.detailLabel}>PhonePe Transaction:</Text>
+            <Text style={styles.detailLabel}>Status:</Text>
             <Text style={styles.detailValue}>
-              {phonePePaymentService.formatTransactionId(paymentDetails.status.data.pg_transaction_id)}
+              {paymentDetails?.status?.data?.status || 'N/A'}
             </Text>
           </View>
           
           <View style={styles.detailRow}>
-            <Text style={styles.detailLabel}>Amount:</Text>
+            <Text style={styles.detailLabel}>Message:</Text>
             <Text style={styles.detailValue}>
-              {phonePePaymentService.formatAmount(
-                paymentDetails.status.data.amount,
-                paymentDetails.status.data.currency
-              )}
+              {paymentDetails?.status?.data?.message || 'N/A'}
             </Text>
           </View>
-          
-          <View style={styles.detailRow}>
-            <Text style={styles.detailLabel}>Payment Method:</Text>
-            <Text style={styles.detailValue}>
-              {phonePePaymentService.getPaymentInstrumentDisplay(
-                paymentDetails.status.data.payment_instrument.type
-              )}
-            </Text>
-          </View>
-          
-          <View style={styles.detailRow}>
-            <Text style={styles.detailLabel}>Response Code:</Text>
-            <Text style={styles.detailValue}>
-              {paymentDetails.status.data.response_code}
-            </Text>
-          </View>
-          
-          <View style={styles.detailRow}>
-            <Text style={styles.detailLabel}>Response Message:</Text>
-            <Text style={styles.detailValue}>
-              {phonePePaymentService.getResponseMessageDisplay(
-                paymentDetails.status.data.response_code,
-                paymentDetails.status.data.response_message
-              )}
-            </Text>
-          </View>
-          
-          {paymentDetails.status.data.bank_reference_number && (
-            <View style={styles.detailRow}>
-              <Text style={styles.detailLabel}>Bank Reference:</Text>
-              <Text style={styles.detailValue}>
-                {paymentDetails.status.data.bank_reference_number}
-              </Text>
-            </View>
-          )}
-          
-          {paymentDetails.status.data.upi_transaction_id && (
-            <View style={styles.detailRow}>
-              <Text style={styles.detailLabel}>UPI Transaction:</Text>
-              <Text style={styles.detailValue}>
-                {paymentDetails.status.data.upi_transaction_id}
-              </Text>
-            </View>
-          )}
           
           <View style={styles.detailRow}>
             <Text style={styles.detailLabel}>Date & Time:</Text>
             <Text style={styles.detailValue}>
-              {new Date(paymentDetails.status.data.created_at).toLocaleString('en-IN')}
+              {new Date().toLocaleString('en-IN')}
             </Text>
           </View>
         </View>

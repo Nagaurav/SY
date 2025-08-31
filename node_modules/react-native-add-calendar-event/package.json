@@ -1,0 +1,41 @@
+{
+  "name": "react-native-add-calendar-event",
+  "version": "5.0.0",
+  "description": "creating events in react native using the standard iOS / Android dialogs",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "test": "jest",
+    "build:plugin": "tsc --build plugin"
+  },
+  "keywords": [
+    "react-native"
+  ],
+  "author": "Vojtech Novak",
+  "license": "MIT",
+  "directories": {
+    "example": "example"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vonovak/react-native-add-calendar-event.git"
+  },
+  "bugs": {
+    "url": "https://github.com/vonovak/react-native-add-calendar-event/issues"
+  },
+  "homepage": "https://github.com/vonovak/react-native-add-calendar-event#readme",
+  "peerDependencies": {
+    "expo": ">=47.0.0"
+  },
+  "peerDependenciesMeta": {
+    "expo": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "expo": "^47.0.0",
+    "expo-module-scripts": "^3.0.7",
+    "jest": "^24.9.0",
+    "typescript": "^5.3.3"
+  }
+}

@@ -10,7 +10,7 @@ import {
   ActivityIndicator,
   Alert,
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { useFocusEffect } from '@react-navigation/native';
 
 import { ScreenContainer } from '../components/common/ScreenContainer';
@@ -20,7 +20,7 @@ import { ROUTES } from '../navigation/constants';
 import { colors } from '../theme/colors';
 
 const ArticleScreen: React.FC = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp<any>>();
   const [articles, setArticles] = useState<Article[]>([]);
   const [allArticles, setAllArticles] = useState<Article[]>([]);
   const [loading, setLoading] = useState(true);
@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   retryButtonText: {
-    color: colors.white,
+    color: colors.offWhite,
     fontSize: 16,
     fontWeight: '600',
   },

@@ -9,13 +9,13 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useNavigation, useRoute, NavigationProp } from '@react-navigation/native';
 
 import { colors } from '../theme/colors';
 import { ROUTES } from '../navigation/constants';
 
 const ConsultationBookingScreen: React.FC = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp<any>>();
   const route = useRoute();
   const { mode, location } = route.params as {
     mode: 'online' | 'offline';
@@ -60,10 +60,10 @@ const ConsultationBookingScreen: React.FC = () => {
       <View style={styles.bottomAction}>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate(ROUTES.DATE_SELECTION as never, {
+          onPress={() => navigation.navigate(ROUTES.DATE_SELECTION, {
             mode,
             location,
-          } as never)}
+          })}
         >
           <Text style={styles.buttonText}>Continue to Date Selection</Text>
         </TouchableOpacity>

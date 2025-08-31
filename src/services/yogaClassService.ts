@@ -120,7 +120,7 @@ class YogaClassService {
   // Get all yoga classes using the user API endpoint
   async getYogaClasses(params: YogaClassFilters = {}): Promise<YogaClassResponse> {
     try {
-      console.log('🔍 YogaClassService - Calling API:', API_CONFIG.ENDPOINTS.USER.YOGA_CLASSES);
+      console.log('🔍 YogaClassService - Calling API:', API_CONFIG.ENDPOINTS.YOGA_CLASSES);
       console.log('🔍 YogaClassService - With params:', params);
       
       const response = await makeApiRequest(

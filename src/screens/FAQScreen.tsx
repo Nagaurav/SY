@@ -62,12 +62,9 @@ const FAQScreen: React.FC = () => {
     setError(null);
     
     try {
-      const response = await makeApiRequest<FAQResponse>('/faqs', {
-        method: 'GET',
-        params: {
-          page: isRefresh ? 1 : pagination.page,
-          limit: pagination.limit,
-        },
+      const response = await makeApiRequest('/faqs', 'GET', {
+        page: isRefresh ? 1 : pagination.page,
+        limit: pagination.limit,
       });
       
       if (response.success && response.data) {
@@ -344,7 +341,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   retryButtonText: {
-    color: colors.white,
+    color: colors.offWhite,
     fontSize: 14,
     fontWeight: '500',
   },

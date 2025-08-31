@@ -15,8 +15,22 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import { ROUTES } from '../navigation/constants';
 import { colors } from '../theme/colors';
 
+// Define types for better type safety
+interface CategoryOption {
+  title: string;
+  icon: string;
+  description: string;
+  color: string;
+  features: string[];
+}
+
+interface CategoryConfig {
+  classes?: CategoryOption;
+  consultation: CategoryOption;
+}
+
 // Enhanced category configuration with better visual design
-const CATEGORY_CONFIG = {
+const CATEGORY_CONFIG: Record<string, CategoryConfig> = {
   yoga: {
     classes: {
       title: 'Yoga Classes',
@@ -115,6 +129,11 @@ const CategorySelectionScreen: React.FC = () => {
   const handleOptionPress = (optionType: 'classes' | 'consultation') => {
     const option = categoryOptions[optionType];
     
+    if (!option) {
+      console.error(`Option ${optionType} not available for category ${category}`);
+      return;
+    }
+    
     // For categories that only have consultation, use the base category name
     // For categories with both options, use the specific category ID
     const categoryId = categoryOptions.classes 
@@ -175,7 +194,7 @@ const CategorySelectionScreen: React.FC = () => {
                 styles.optionCard,
                 { 
                   backgroundColor: colors.offWhite,
-                  shadowColor: categoryOptions.classes.color,
+                  shadowColor: categoryOptions.classes!.color,
                   shadowOpacity: 0.2,
                   shadowRadius: 12,
                   shadowOffset: { width: 0, height: 6 },
@@ -185,31 +204,31 @@ const CategorySelectionScreen: React.FC = () => {
               activeOpacity={0.8}
               onPress={() => handleOptionPress('classes')}
             >
-              <View style={[styles.optionIconContainer, { backgroundColor: categoryOptions.classes.color }]}>
+              <View style={[styles.optionIconContainer, { backgroundColor: categoryOptions.classes!.color }]}>
                 <MaterialCommunityIcons 
-                  name={categoryOptions.classes.icon as any} 
+                  name={categoryOptions.classes!.icon as any} 
                   size={32} 
                   color={colors.offWhite} 
                 />
               </View>
               
-              <Text style={styles.optionTitle}>{categoryOptions.classes.title}</Text>
-              <Text style={styles.optionDescription}>{categoryOptions.classes.description}</Text>
+              <Text style={styles.optionTitle}>{categoryOptions.classes!.title}</Text>
+              <Text style={styles.optionDescription}>{categoryOptions.classes!.description}</Text>
               
               <View style={styles.featuresContainer}>
-                {categoryOptions.classes.features.map((feature, index) => (
+                {categoryOptions.classes!.features.map((feature: string, index: number) => (
                   <View key={index} style={styles.featureItem}>
                     <MaterialCommunityIcons 
                       name="check-circle" 
                       size={16} 
-                      color={categoryOptions.classes.color} 
+                      color={categoryOptions.classes!.color} 
                     />
                     <Text style={styles.featureText}>{feature}</Text>
                   </View>
                 ))}
               </View>
 
-              <View style={[styles.optionButton, { backgroundColor: categoryOptions.classes.color }]}>
+              <View style={[styles.optionButton, { backgroundColor: categoryOptions.classes!.color }]}>
                 <Text style={styles.optionButtonText}>Choose Classes</Text>
                 <MaterialCommunityIcons name="arrow-right" size={20} color={colors.offWhite} />
               </View>

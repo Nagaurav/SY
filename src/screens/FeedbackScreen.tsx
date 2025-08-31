@@ -119,7 +119,7 @@ const FeedbackScreen: React.FC = () => {
         {category.label}
       </Text>
       {formData.category === category.value && (
-        <MaterialCommunityIcons name="check" size={20} color={colors.white} />
+        <MaterialCommunityIcons name="check" size={20} color={colors.offWhite} />
       )}
     </TouchableOpacity>
   );
@@ -226,10 +226,10 @@ const FeedbackScreen: React.FC = () => {
           disabled={loading}
         >
           {loading ? (
-            <ActivityIndicator size="small" color={colors.white} />
+            <ActivityIndicator size="small" color={colors.offWhite} />
           ) : (
             <>
-              <MaterialCommunityIcons name="send" size={20} color={colors.white} />
+              <MaterialCommunityIcons name="send" size={20} color={colors.offWhite} />
               <Text style={styles.submitButtonText}>Submit Feedback</Text>
             </>
           )}
@@ -366,7 +366,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   selectedOptionText: {
-    color: colors.white,
+    color: colors.offWhite,
   },
   anonymousContainer: {
     flexDirection: 'row',
@@ -392,7 +392,7 @@ const styles = StyleSheet.create({
     opacity: 0.6,
   },
   submitButtonText: {
-    color: colors.white,
+    color: colors.offWhite,
     fontSize: 16,
     fontWeight: '600',
   },

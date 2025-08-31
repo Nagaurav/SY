@@ -40,6 +40,7 @@ export const API_CONFIG = {
       BOOKING_DETAILS: '/booking/details',
       CANCEL_BOOKING: '/booking/cancel',
       PAYMENT_ANALYTICS: '/booking/analytics/payments',
+      PHONEPE_WEBHOOK: '/booking/phonepe/webhook',
     },
     
     // Auth endpoints
@@ -75,6 +76,13 @@ export const API_CONFIG = {
       PROFILE: '/user/profile',
       UPDATE_PROFILE: '/user/profile',
       HEALTH_RECORDS: '/user/health-records',
+      GET_USER_BY_ID: '/user/:id',
+      PROFESSIONALS: '/user/professionals',
+      PROFESSIONALS_SEARCH: '/user/professionals/search',
+      CONSULTATION_BOOKING: '/user/consultation-booking',
+      GET_CONSULTATION_BOOKINGS: '/user/consultation-bookings',
+      GET_CONSULTATION_BOOKING_DETAILS: '/user/consultation-booking/:booking_id',
+      CANCEL_CONSULTATION_BOOKING: '/user/consultation-booking/:booking_id/cancel',
     },
 
     // Customer Support endpoints
@@ -97,6 +105,18 @@ export const API_CONFIG = {
       BOOK: '/user/yoga-classes/book',
       MY_CLASSES: '/user/yoga-classes/my-classes',
     },
+
+    // Payment endpoints
+    PAYMENT: {
+      METHODS: '/payment/methods',
+      REMOVE_METHOD: '/payment/methods/:methodId',
+    },
+
+                 // Article endpoints (consolidated from Blog + Article)
+             ARTICLE: {
+               LIST: '/articles',
+               DETAIL: '/articles/:id',
+             },
   },
 };
 
@@ -185,6 +205,42 @@ export interface FAQQueryParams {
   sort_by?: 'created_at' | 'updated_at' | 'title' | 'category';
   is_active?: boolean;
   is_featured?: boolean;
+}
+
+// PhonePe payment response types
+export interface PhonePeStatusResponse {
+  success: boolean;
+  data?: {
+    status: string;
+    message: string;
+    transactionId?: string;
+  };
+  message?: string;
+}
+
+export interface PhonePeVerifyResponse {
+  success: boolean;
+  data?: {
+    verified: boolean;
+    message: string;
+  };
+  message?: string;
+}
+
+// FAQ response type
+export interface FAQResponse {
+  success: boolean;
+  data?: Array<{
+    id: string;
+    question: string;
+    answer: string;
+    category: string;
+    is_active: boolean;
+    is_featured: boolean;
+    created_at: string;
+    updated_at: string;
+  }>;
+  message?: string;
 }
 
 // Helper function to get current base URL

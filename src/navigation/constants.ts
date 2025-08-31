@@ -33,6 +33,10 @@ export const ROUTES = {
   FAQ_SCREEN: 'FAQScreen',
   CUSTOMER_SUPPORT: 'CustomerSupport',
   FEEDBACK_SCREEN: 'FeedbackScreen',
+  
+  // Article/Blog routes (consolidated)
+  ARTICLE: 'Article',
+  ARTICLE_DETAIL: 'ArticleDetail',
 } as const;
 
 export type RootStackParamList = {
@@ -123,4 +127,8 @@ export type RootStackParamList = {
   [ROUTES.FAQ_SCREEN]: undefined;
   [ROUTES.CUSTOMER_SUPPORT]: undefined;
   [ROUTES.FEEDBACK_SCREEN]: { appointmentId?: string; professionalId?: string };
+  
+  // Article/Blog routes (consolidated)
+  [ROUTES.ARTICLE]: undefined;
+  [ROUTES.ARTICLE_DETAIL]: { articleId: number };
 }; 

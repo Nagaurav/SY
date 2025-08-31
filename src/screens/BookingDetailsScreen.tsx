@@ -42,11 +42,8 @@ const BookingDetailsScreen: React.FC<BookingDetailsScreenProps> = ({ route }) =>
       
       const response = await bookingService.getBookingDetails(bookingId);
       
-      if (response.success) {
-        setBookingDetails(response.data);
-      } else {
-        setError(response.message || 'Failed to fetch booking details');
-      }
+      // The service returns BookingDetails directly, not a response wrapper
+      setBookingDetails(response);
     } catch (err: any) {
       setError(err.message || 'An error occurred while fetching booking details');
     } finally {

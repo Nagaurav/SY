@@ -153,16 +153,9 @@ const ArticleDetailScreen: React.FC = () => {
 
         {/* Article Content */}
         <View style={styles.contentContainer}>
-          {article.content.startsWith('<') ? (
-            <View 
-              style={styles.content}
-              dangerouslySetInnerHTML={{ __html: article.content }}
-            />
-          ) : (
-            <Text style={styles.content}>
-              {article.content}
-            </Text>
-          )}
+          <Text style={styles.content}>
+            {article.content.replace(/<[^>]*>/g, '')}
+          </Text>
         </View>
 
         {/* Tags */}
@@ -263,7 +256,7 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   tag: {
-    backgroundColor: colors.lightGreen,
+    backgroundColor: colors.lightSage,
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderRadius: 16,
@@ -312,7 +305,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
   },
   retryButtonText: {
-    color: colors.white,
+    color: colors.offWhite,
     fontSize: 16,
     fontWeight: '600',
   },

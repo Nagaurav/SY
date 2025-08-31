@@ -12,7 +12,7 @@ import {
   Alert,
 } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useNavigation, useRoute, NavigationProp } from '@react-navigation/native';
 
 import { colors } from '../theme/colors';
 import { ROUTES } from '../navigation/constants';
@@ -26,7 +26,7 @@ interface DateOption {
 }
 
 const DateSelectionScreen: React.FC = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp<any>>();
   const route = useRoute();
   const { mode, location, professionalId } = route.params as {
     mode: 'online' | 'offline';
@@ -135,12 +135,12 @@ const DateSelectionScreen: React.FC = () => {
       return;
     }
 
-    navigation.navigate(ROUTES.TIME_SELECTION as never, {
+    navigation.navigate(ROUTES.TIME_SELECTION, {
       selectedDate: selectedDate.date.toISOString().split('T')[0],
       mode,
       location,
       professionalId,
-    } as never);
+    });
   };
 
   const renderDateItem = ({ item }: { item: DateOption }) => (
